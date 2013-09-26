@@ -684,6 +684,11 @@ _add_control('moving speed',
              dxl_to_si=dxl_to_speed,
              si_to_dxl=speed_to_dxl)
 
+_add_control('goal_acceleration',
+             address=0x49, length=1,
+             dxl_to_si=dxl_to_acceleration,
+             si_to_dxl=acceleration_to_dxl)
+
 _add_control('torque limit',
              address=0x22,
              dxl_to_si=dxl_to_torque,

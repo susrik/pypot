@@ -198,3 +198,7 @@ class DxlMXMotor(DxlMotor):
 
 DxlMXMotor.pid = DxlMXMotor._make_accessor('pid', rw=True,
                                            doc='PID gains of the motors (see robotis website).')
+
+
+DxlMXMotor.goal_acceleration = DxlMXMotor._make_accessor('goal_acceleration', rw=True,
+                                                         doc='Goal acceleration of the motors (see robotis website)')

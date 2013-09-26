@@ -74,6 +74,15 @@ def dxl_to_load(value, model):
     
     return dxl_to_torque(load, model) * direction
 
+# MARK: - Acceleration
+
+def dxl_to_acceleration(value, model):
+    return value * 8.583
+
+def acceleration_to_dxl(value, model):
+    return int(value / 8.583)
+
+
 # PID Gains
 
 def dxl_to_pid(value, model):

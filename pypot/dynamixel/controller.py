@@ -85,6 +85,7 @@ class BaseDxlController(DxlController):
         
         self.add_sync_loop(50, self._get_pos_speed_load, 'Thread-get_pos_speed_load')
         self.add_sync_loop(50, self._set_pos_speed_load, 'Thread-set_pos_speed_load')
+        self.add_write_loop(50, 'goal_acceleration')
 
         self.add_write_loop(10, 'pid_gain', 'pid')
         self.add_write_loop(10, 'compliance_margin')
