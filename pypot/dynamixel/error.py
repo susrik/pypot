@@ -69,9 +69,10 @@ class BaseErrorHandler(DxlErrorHandler):
                               'timeout': com_error.dxl_io.timeout})
 
     def handle_overload_error(self, instruction_packet):
-        msg = 'Overload error on motors {}'.format(instruction_packet.ids)
+        logger.warning('Overload error!')
+        # msg = 'Overload error on motors {}'.format(instruction_packet.ids)
 
-        logger.warning(msg,
-                       extra={'port': error.dxl_io.port,
-                              'baudrate': error.dxl_io.baudrate,
-                              'timeout': error.dxl_io.timeout})
+        # logger.warning(msg,
+        #                extra={'port': error.dxl_io.port,
+        #                       'baudrate': error.dxl_io.baudrate,
+        #                       'timeout': error.dxl_io.timeout})
