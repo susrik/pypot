@@ -35,7 +35,8 @@ def degree_to_dxl(value, model):
     model = 'MX' if model.startswith('MX') else '*'
     max_pos, max_deg = position_range[model]
 
-    pos = int(round((max_pos - 1) * ((max_deg / 2 + float(value)) / max_deg), 0))
+    pos = int(
+        round((max_pos - 1) * ((max_deg / 2 + float(value)) / max_deg), 0))
     pos = min(max(pos, 0), max_pos - 1)
 
     return pos
@@ -70,6 +71,14 @@ def dxl_to_torque(value, model):
 
 def torque_to_dxl(value, model):
     return int(round(value * 10.23, 0))
+
+
+def dxl_to_acc(value, model):
+    return round(value / 254. * 8.538, 1)
+
+
+def acc_to_dxl(value, model):
+    return int(round(value * 254. / 8.538, 0))
 
 
 def dxl_to_load(value, model):
@@ -148,7 +157,8 @@ def baudrate_to_dxl(value, model):
     for k, v in dynamixelBaudrates.iteritems():
         if v == value:
             return k
-    raise ValueError('incorrect baudrate {} (possible values {})'.format(value, dynamixelBaudrates.values()))
+    raise ValueError(
+        'incorrect baudrate {} (possible values {})'.format(value, dynamixelBaudrates.values()))
 
 # MARK: - Return Delay Time
 
@@ -191,7 +201,8 @@ def dxl_to_status(value, model):
 
 def status_to_dxl(value, model):
     if value not in status_level:
-        raise ValueError('status "{}" should be chosen among {}'.format(value, status_level))
+        raise ValueError(
+            'status "{}" should be chosen among {}'.format(value, status_level))
     return status_level.index(value)
 
 # MARK: - Error
@@ -217,9 +228,11 @@ def decode_error(error_code):
 
 def alarm_to_dxl(value, model):
     if not set(value).issubset(dynamixelErrors):
-        raise ValueError('should only contains error among {}'.format(dynamixelErrors))
+        raise ValueError(
+            'should only contains error among {}'.format(dynamixelErrors))
 
-    indices = [len(dynamixelErrors) - 1 - dynamixelErrors.index(e) for e in value]
+    indices = [len(dynamixelErrors) - 1 - dynamixelErrors.index(e)
+               for e in value]
     return sum(2 ** i for i in indices)
 
 
@@ -254,7 +267,8 @@ def dxl_decode_all(data, nb_elem):
 
 def dxl_code(value, length):
     if length not in (1, 2):
-        raise ValueError('try to code value with an incorrect length {}'.format(length))
+        raise ValueError(
+            'try to code value with an incorrect length {}'.format(length))
 
     if length == 1:
         return (value, )
