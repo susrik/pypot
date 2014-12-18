@@ -87,6 +87,9 @@ def dxl_to_load(value, model):
 
     return dxl_to_torque(load, model) * direction
 
+
+def dxl_to_current(value, model):
+    return 4.5 * (value - 2048)
 # PID Gains
 
 

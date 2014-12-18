@@ -805,7 +805,7 @@ _add_control('present current',
              address=0x44,
              models=('MX-64', ),
              access=_DxlAccess.readonly,
-             dxl_to_si=dxl_to_load,
+             dxl_to_si=dxl_to_current,
              getter_name='present_current')
 
 
