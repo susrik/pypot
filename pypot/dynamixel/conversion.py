@@ -93,7 +93,7 @@ def dxl_to_current(value, model):
 
 
 def current_to_dxl(value, model):
-    return int(value / 4.5 + 2048)
+    return int(value)
 # PID Gains
 
 
