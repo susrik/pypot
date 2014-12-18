@@ -90,6 +90,10 @@ def dxl_to_load(value, model):
 
 def dxl_to_current(value, model):
     return 4.5 * (value - 2048)
+
+
+def current_to_dxl(value, model):
+    return int(value / 4.5 + 2048)
 # PID Gains
 
 

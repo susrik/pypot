@@ -820,7 +820,8 @@ _add_control('torque mode',
 _add_control('goal torque',
              address=0x47,
              models=('MX-64', ),
-             dxl_to_si=dxl_to_load)
+             dxl_to_si=dxl_to_current,
+             si_to_dxl=current_to_dxl)
 
 
 _add_control('goal acceleration',
