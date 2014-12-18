@@ -93,7 +93,10 @@ def dxl_to_current(value, model):
 
 
 def current_to_dxl(value, model):
-    return int(value)
+    if value < 0.0:
+        return int(1024 - value)
+    else:
+        return int(value)
 # PID Gains
 
 
