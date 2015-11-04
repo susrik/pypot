@@ -33,7 +33,7 @@ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
 
     # Use miniconda python (provide binaries for scipy and numpy on Linux)
     if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-        curl -o miniconda.sh http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh 
+        curl -o miniconda.sh https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-2.4.0-Linux-x86_64.sh
     else
         curl -o miniconda.sh http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh 
     fi
