@@ -25,7 +25,7 @@ pushd ci-tests
     if [[ -n "$SSH_VREP_SERVER"  ]]; then
         pip -qq install poppy-humanoid
         # Download a PoppyHumanoid ipython notebook
-        curl -o nb.ipynb https://raw.githubusercontent.com/poppy-project/poppy-humanoid/master/software/samples/notebooks/Controlling%20a%20Poppy%20humanoid%20in%20V-REP%20using%20pypot.ipynb
+        curl -k -o nb.ipynb https://raw.githubusercontent.com/poppy-project/poppy-humanoid/master/software/samples/notebooks/Controlling%20a%20Poppy%20humanoid%20in%20V-REP%20using%20pypot.ipynb
         runipy -o nb.ipynb
     fi
 
