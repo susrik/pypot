@@ -75,7 +75,8 @@ addons:
       - texlive 
       - texlive-latex-extra
       - dvipng
-  
+      - ca-certificates
+
 before_install:
   - . ./ci/before_install.sh
 install:
