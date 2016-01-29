@@ -157,9 +157,14 @@ def dxl_io_from_confignode(config, c_params, ids, strict):
                 if 'protocol' in c_params and c_params['protocol'] == 2
                 else pypot.dynamixel.io.DxlIO)
 
+    extra_params = {}
+    if "baudrate" in c_params:
+        extra_params["baudrate"] = c_params["baudrate"]
+
     dxl_io = DxlIOCls(port=port,
                       use_sync_read=sync_read,
-                      error_handler_cls=handler)
+                      error_handler_cls=handler,
+                      **extra_params)
 
     found_ids = dxl_io.scan(ids)
     if ids != found_ids:
