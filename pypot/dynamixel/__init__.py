@@ -105,13 +105,22 @@ def find_port(ids, strict=True):
         ids, list(set(ids) - set(ids_founds))))
 
 
-def autodetect_robot():
+def autodetect_robot(**kwargs):
     """ Creates a :class:`~pypot.robot.robot.Robot` by detecting dynamixel motors on all available ports. """
     motor_controllers = []
 
-    for port in get_available_ports():
+    if "port" in kwargs:
+        available_ports = [kwargs["port"]]
+    else:
+        available_ports = get_available_ports();
+
+    extra_args = {}
+    if "baudrate" in kwargs:
+        extra_args["baudrate"] = kwargs["baudrate"]
+
+    for port in available_ports:
         for DxlIOCls in (DxlIO, Dxl320IO):
-            dxl_io = DxlIOCls(port)
+            dxl_io = DxlIOCls(port, **extra_args)
             ids = dxl_io.scan()
 
             if not ids:
@@ -132,5 +141,7 @@ def autodetect_robot():
 
             c = BaseDxlController(dxl_io, motors)
             motor_controllers.append(c)
+
+            break  # don't try the other protocol(s)
 
     return Robot(motor_controllers)
